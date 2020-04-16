@@ -16,11 +16,6 @@ namespace MovieRentalApp.Data.Repository
             _context = context;
         }
 
-        public int Count(Func<T, bool> predicate)
-        {
-            return _context.Set<T>().Where(predicate).Count();
-        }
-
         public void Create(T entity)
         {
             _context.Add(entity);
@@ -52,6 +47,11 @@ namespace MovieRentalApp.Data.Repository
         {
             _context.Entry(entity).State = EntityState.Modified;
             Save();
+        }
+
+        public int Count(Func<T, bool> predicate)
+        {
+            return _context.Set<T>().Where(predicate).Count();
         }
 
         protected void Save() => _context.SaveChanges();
