@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HomeViewModel
+@{
+    int availableMovies = Model.MovieCount - Model.RentMovieCount;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Customers Count
+            </div>
+            <div class="panel-body">
+                There are @Model.CustomerCount customers
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Directors Count
+            </div>
+            <div class="panel-body">
+                There are @Model.DirectorCount Directors
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Movie count
+            </div>
+            <div class="panel-body">
+                There are @availableMovies movie available out of @Model.MovieCount movies
+            </div>
+        </div>
+    </div>
 </div>

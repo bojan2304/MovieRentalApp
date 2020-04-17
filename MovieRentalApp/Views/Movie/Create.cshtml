@@ -1,0 +1,49 @@
+﻿@model MovieViewModel
+
+<div class="row">
+    <form asp-controller="Movie" asp-action="Create" method="post" class="form-horizontal" role="form">
+        <h3 class="col-md-offset-2">Create new movie</h3>
+
+        <div class="form-group">
+            <label asp-for="Movie.Director" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(m => m.Movie.DirectorId,
+                                       new SelectList(Model.Directors.Select(x => new { Value = x.Id, Text = x.Name }), "Value", "Text"), "Select a Director",
+                                       htmlAttributes: new { @class = "form-control border-input" })
+                <span asp-validation-for="Movie.Director" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-2">
+                <a class="btn btn-success" style="width:100%" asp-controller="Movie" asp-action="Create">Create a Director</a>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Movie.Title" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="Movie.Title" class="form-control" placeholder="Enter movie title" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Movie.ShortDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="Movie.ShortDescription" class="form-control" placeholder="Enter movie short description here" />
+                <span asp-validation-for="Movie.ShortDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Movie.ImageUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="Movie.ImageUrl" class="form-control" />
+                <span asp-validation-for="Movie.ImageUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-offset-2 col-md-6">
+                <input class="btn btn-default" type="submit" value="Return" asp-controller="Movie" asp-action="Index" />
+                <input class="btn btn-success" type="submit" value="Create" />
+            </div>
+        </div>
+    </form>
+</div>

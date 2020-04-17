@@ -19,9 +19,9 @@ namespace MovieRentalApp.Controllers
             _directorRepository = directorRepository;
         }
 
-        public IActionResult Index(int? directorId, int? customerId)
+        public IActionResult Index(int? directorId, int? borrowerId)
         {
-            if (directorId == null && customerId == null)
+            if (directorId == null && borrowerId == null)
             {
                 var movie = _movieRepository.GetAllWhitDirector();
                 return CheckMovies(movie);
@@ -29,40 +29,27 @@ namespace MovieRentalApp.Controllers
             else if (directorId != null)
             {
                 // filter by director id
-                var director = _directorRepository
-                    .GetWhitMovies((int)directorId);
+                var director = _directorRepository.GetWhitMovies((int)directorId);
 
                 if (director.Movies.Count() == 0)
                 {
-                    return View("AuthorEmpty", director);
+                    return View("EmptyDirector", director);
                 }
                 else
                 {
                     return View(director.Movies);
                 }
             }
-            else if (customerId != null)
+            else if (borrowerId != null)
             {
                 // filter by customer id
-                var movies = _movieRepository
-                    .FindWhitDirectorAndCustomer(m => m.CustomerId == customerId);
+                var movies = _movieRepository.FindWhitDirectorAndCustomer(m => m.BorrowerId == borrowerId);
                 // check customer movies
                 return CheckMovies(movies);
             }
             else
             {
                 throw new ArgumentException();
-            }
-        }
-        public IActionResult CheckMovies(IEnumerable<Movie> movie)
-        {
-            if (movie.Count() == 0)
-            {
-                return View("Empty");
-            }
-            else
-            {
-                return View(movie);
             }
         }
 
@@ -120,6 +107,18 @@ namespace MovieRentalApp.Controllers
             _movieRepository.Delete(movie);
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult CheckMovies(IEnumerable<Movie> movie)
+        {
+            if (movie.Count() == 0)
+            {
+                return View("Empty");
+            }
+            else
+            {
+                return View(movie);
+            }
         }
     }
 }

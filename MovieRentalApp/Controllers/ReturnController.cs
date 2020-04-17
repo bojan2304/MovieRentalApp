@@ -21,7 +21,7 @@ namespace MovieRentalApp.Controllers
         public IActionResult Index()
         {
             // rented movies
-            var rentedMovies = _movieRepository.FindWhitDirectorAndCustomer(x => x.CustomerId != 0);
+            var rentedMovies = _movieRepository.FindWhitDirectorAndCustomer(x => x.BorrowerId != 0);
 
             if (rentedMovies == null || rentedMovies.ToList().Count() == 0)
             {
@@ -33,8 +33,8 @@ namespace MovieRentalApp.Controllers
         public IActionResult ReturnMovie(int movieId)
         {
             var movie = _movieRepository.GetById(movieId);
-            movie.Customer = null;
-            movie.CustomerId = 0;
+            movie.Borrower = null;
+            movie.BorrowerId = 0;
 
             _movieRepository.Update(movie);
 

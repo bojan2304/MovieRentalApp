@@ -1,0 +1,31 @@
+﻿@model MovieViewModel
+
+<div class="row orderForm">
+
+    <form asp-controller="Movie" asp-action="Update" method="post" class="form-horizontal" role="form">
+        <h3 class="col-md-offset-2">Update movie</h3>
+        @Html.HiddenFor(m => Model.Movie.Id)
+        <div class="form-group">
+            <label asp-for="Movie.Director" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+
+                @Html.DropDownListFor(m => m.Movie.DirectorId,
+                                                  new SelectList(Model.Directors.Select(x => new { Value = x.Id, Text = x.Name }), "Value", "Text"),
+                                                  htmlAttributes: new { @class = "form-control border-input" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Movie.Title" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="Movie.Title" class="form-control" placeholder="Enter book title" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-offset-2 col-md-6">
+                <input class="btn btn-default" type="submit" value="Return" asp-controller="Movie" asp-action="Index" />
+                <input class="btn btn-success" type="submit" value="Update" />
+            </div>
+        </div>
+    </form>
+</div>

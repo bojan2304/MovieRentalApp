@@ -1,37 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MovieRentalApp.Data.Interfaces;
 using MovieRentalApp.Models;
+using MovieRentalApp.ViewModels;
 
 namespace MovieRentalApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IMovieRepository _movieRepository;
+        private readonly IDirectorRepository _directorRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IMovieRepository movieRepository, IDirectorRepository directorRepository, ICustomerRepository customerRepository)
         {
-            _logger = logger;
+            _movieRepository = movieRepository;
+            _directorRepository = directorRepository;
+            _customerRepository = customerRepository;
         }
-
         public IActionResult Index()
         {
-            return View();
-        }
+            var homeVM = new HomeViewModel()
+            {
+                DirectorCount = _directorRepository.Count(x => true),
+                CustomerCount = _customerRepository.Count(x => true),
+                MovieCount = _movieRepository.Count(x => true),
+                RentMovieCount = _movieRepository.Count(x => x.Borrower != null)
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(homeVM);
         }
     }
 }

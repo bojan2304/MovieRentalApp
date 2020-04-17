@@ -16,15 +16,13 @@ namespace MovieRentalApp.Models
         [MaxLength(255)]
         public string ShortDescription { get; set; }
         public string ImageUrl { get; set; }
-        [Required]
         public DateTime ReleaseDate { get; set; }
-        [Required]
         public DateTime CreatedAt { get; set; }
 
         public virtual Director Director { get; set; }
         public int DirectorId { get; set; }
 
-        public virtual Customer Customer { get; set; }
-        public int CustomerId { get; set; }
+        public virtual Customer Borrower { get; set; }
+        public int BorrowerId { get; set; }
     }
 }

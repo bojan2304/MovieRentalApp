@@ -34,7 +34,7 @@ namespace MovieRentalApp.Controllers
                 customerVM.Add(new CustomerViewModel
                 {
                     Customer = customer,
-                    MovieCount = _movieRepository.Count(x => x.CustomerId == customer.Id)
+                    MovieCount = _movieRepository.Count(x => x.BorrowerId == customer.Id)
                 });
             }
 

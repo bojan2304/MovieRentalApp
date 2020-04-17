@@ -18,7 +18,7 @@ namespace MovieRentalApp.Controllers
 
         public IActionResult Index()
         {
-            var availableMovies = _movieRepository.FindWhitDirector(x => x.CustomerId == 0);
+            var availableMovies = _movieRepository.FindWhitDirector(x => x.BorrowerId == 0);
             if (availableMovies.Count() == 0)
             {
                 return View("Empty");
@@ -40,13 +40,13 @@ namespace MovieRentalApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult LendBook(RentalViewModel rentalViewModel)
+        public IActionResult RentMovie(RentalViewModel rentalViewModel)
         {
             var movie = _movieRepository.GetById(rentalViewModel.Movie.Id);
 
-            var customer = _customerRepository.GetById(rentalViewModel.Movie.CustomerId);
+            var customer = _customerRepository.GetById(rentalViewModel.Movie.BorrowerId);
 
-            movie.Customer = customer;
+            movie.Borrower = customer;
 
             _movieRepository.Update(movie);
 

@@ -21,7 +21,7 @@ namespace MovieRentalApp.Data.Repository
 
         public IEnumerable<Movie> FindWhitDirectorAndCustomer(Func<Movie, bool> predicate)
         {
-            return _context.Movies.Include(a => a.Director).Include(a => a.Customer).Where(predicate);
+            return _context.Movies.Include(a => a.Director).Include(a => a.Borrower).Where(predicate);
         }
 
         public IEnumerable<Movie> GetAllWhitDirector()

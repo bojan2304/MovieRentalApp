@@ -18,7 +18,6 @@ namespace MovieRentalApp.Models
         [Required]
         [MaxLength(20)]
         public string PhoneNumber { get; set; }
-        [Required]
         public DateTime CreatedAt { get; set; }
     }
 }

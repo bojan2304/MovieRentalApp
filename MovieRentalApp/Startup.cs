@@ -24,9 +24,9 @@ namespace MovieRentalApp
         {
             services.AddDbContext<MovieRentalDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MovieRentalDatabase")));
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
-            services.AddTransient<IDirectorRepository, DirectorRepository>();
-            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IDirectorRepository, DirectorRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddControllersWithViews();
         }
 

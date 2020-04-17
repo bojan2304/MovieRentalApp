@@ -12,7 +12,6 @@ namespace MovieRentalApp.Models
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
-        [Required]
         public DateTime CreatedAt { get; set; }
 
         public virtual ICollection<Movie> Movies { get; set; }
