@@ -1,20 +1,35 @@
 ﻿@model Customer
 
-<div class="row orderForm">
-    <form asp-controller="Customer" asp-action="Update" method="post" class="form-horizontal" role="form">
-        <h3 class="col-md-offset-2">Edit customer @Model.Name</h3>
+<div class="row">
+    <form asp-controller="Customer" asp-action="Update" method="post" class="col-md-8">
+        <h3 class="col-md-12 my-5">Edit customer @Model.Name</h3>
         @Html.HiddenFor(m => Model.Id)
+        @Html.HiddenFor(m => Model.CreatedAt)
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-6">
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" placeholder="Enter customers name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <div class="btn-group col-md-offset-2 col-md-6">
-                <input class="btn btn-default" type="submit" value="Return" asp-controller="Customer" asp-action="Index" />
-                <input class="btn btn-success" type="submit" value="Update" />
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="Address" class="form-control" placeholder="Enter customers address" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Enter customers phone number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group col-md-6 mt-3">
+                <input class="btn btn-primary col-md-3 mr-2" type="submit" value="Return" asp-controller="Customer" asp-action="Index" />
+                <input class="btn btn-success col-md-3" type="submit" value="Update" />
             </div>
         </div>
     </form>

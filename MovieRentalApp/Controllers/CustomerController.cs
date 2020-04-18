@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using MovieRentalApp.Data.Interfaces;
 using MovieRentalApp.Models;
 using MovieRentalApp.ViewModels;
@@ -54,6 +55,7 @@ namespace MovieRentalApp.Controllers
                 return View(customer);
             }
 
+            customer.CreatedAt = DateAndTime.Now;
             _customerRepository.Create(customer);
 
             return RedirectToAction("Index");

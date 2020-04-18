@@ -9,7 +9,7 @@ namespace MovieRentalApp.Data.Interfaces
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Func<T, bool> predicate);
-        T GetById(int id);
+        T GetById(int? id);
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);

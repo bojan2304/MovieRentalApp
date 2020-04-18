@@ -34,7 +34,7 @@ namespace MovieRentalApp.Controllers
         {
             var movie = _movieRepository.GetById(movieId);
             movie.Borrower = null;
-            movie.BorrowerId = 0;
+            movie.BorrowerId = null;
 
             _movieRepository.Update(movie);
 

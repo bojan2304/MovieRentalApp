@@ -3,35 +3,35 @@
     int availableMovies = Model.MovieCount - Model.RentMovieCount;
 }
 
-<h1>Dashboard</h1>
+<h1 class="mt-5">Dashboard</h1>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Customers Count
+    <div class="col-md-6 mt-5">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h5>Customers Count</h5>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 There are @Model.CustomerCount customers
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Directors Count
+    <div class="col-md-6 mt-5">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h5>Directors Count</h5>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 There are @Model.DirectorCount Directors
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Movie count
+    <div class="col-md-6 mt-5">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h5>Movies Count</h5>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 There are @availableMovies movie available out of @Model.MovieCount movies
             </div>
         </div>

@@ -71,6 +71,7 @@ namespace MovieRentalApp.Controllers
                 return View(movieViewModel);
             }
 
+            movieViewModel.Movie.CreatedAt = DateTime.Now;
             _movieRepository.Create(movieViewModel.Movie);
 
             return RedirectToAction("Index");

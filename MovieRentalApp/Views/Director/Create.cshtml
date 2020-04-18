@@ -1,9 +1,9 @@
 ﻿@model CreateDirectorViewModel
 
-<div class="row orderForm">
-    <form asp-controller="Director" asp-action="Create" method="post" class="form-horizontal" role="form">
+<div class="row">
+    <form asp-controller="Director" asp-action="Create" method="post" class="col-md-8">
         @Html.HiddenFor(x => x.Referer)
-        <h3 class="col-md-offset-2">Create new Director</h3>
+        <h3 class="col-md-12 my-5">Create new Director</h3>
         <div class="form-group">
             <label asp-for="Director.Name" class="col-md-2 control-label"></label>
             <div class="col-md-6">
@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="btn-group col-md-offset-2 col-md-6">
-                <input class="btn btn-default" type="submit" value="Return" asp-controller="Director" asp-action="Index" />
-                <input class="btn btn-success" type="submit" value="Create" />
+            <div class="btn-group col-md-6 mt-3">
+                <input class="btn btn-primary col-md-3 mr-3" type="submit" value="Return" asp-controller="Director" asp-action="Index" />
+                <input class="btn btn-success col-md-3" type="submit" value="Create" />
             </div>
         </div>
     </form>

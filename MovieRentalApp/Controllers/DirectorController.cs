@@ -65,6 +65,7 @@ namespace MovieRentalApp.Controllers
                 return View(directorVM);
             }
 
+            directorVM.Director.CreatedAt = DateTime.Now;
             _directorRepository.Create(directorVM.Director);
 
             if (!String.IsNullOrEmpty(directorVM.Referer))

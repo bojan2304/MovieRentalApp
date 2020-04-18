@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Director>
 
-<a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Director" asp-action="Create">Create new Director</a>
+<a class="btn btn-success my-5" asp-controller="Director" asp-action="Create">Create new Director</a>
 
 <div class="row">
     @foreach (var director in Model)
     {
-        @Html.PartialAsync("DirectorPartial", director)
+        @Html.Partial("DirectorPartial", director)
     }
 </div>

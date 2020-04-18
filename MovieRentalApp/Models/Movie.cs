@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,6 @@ namespace MovieRentalApp.Models
         public int DirectorId { get; set; }
 
         public virtual Customer Borrower { get; set; }
-        public int BorrowerId { get; set; }
+        public int? BorrowerId { get; set; }
     }
 }
