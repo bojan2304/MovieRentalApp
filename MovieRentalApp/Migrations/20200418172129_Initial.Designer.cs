@@ -10,7 +10,7 @@ using MovieRentalApp.Data;
 namespace MovieRentalApp.Migrations
 {
     [DbContext(typeof(MovieRentalDbContext))]
-    [Migration("20200415154316_Initial")]
+    [Migration("20200418172129_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,11 +78,11 @@ namespace MovieRentalApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BorrowerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<int>("DirectorId")
                         .HasColumnType("int");
@@ -105,7 +105,7 @@ namespace MovieRentalApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("BorrowerId");
 
                     b.HasIndex("DirectorId");
 
@@ -114,11 +114,9 @@ namespace MovieRentalApp.Migrations
 
             modelBuilder.Entity("MovieRentalApp.Models.Movie", b =>
                 {
-                    b.HasOne("MovieRentalApp.Models.Customer", "Customer")
+                    b.HasOne("MovieRentalApp.Models.Customer", "Borrower")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BorrowerId");
 
                     b.HasOne("MovieRentalApp.Models.Director", "Director")
                         .WithMany("Movies")

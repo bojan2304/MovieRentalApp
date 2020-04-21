@@ -49,17 +49,17 @@ namespace MovieRentalApp.Migrations
                     ReleaseDate = table.Column<DateTime>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     DirectorId = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
+                    BorrowerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Customers_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Movies_Customers_BorrowerId",
+                        column: x => x.BorrowerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Movies_Directors_DirectorId",
                         column: x => x.DirectorId,
@@ -69,9 +69,9 @@ namespace MovieRentalApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movies_CustomerId",
+                name: "IX_Movies_BorrowerId",
                 table: "Movies",
-                column: "CustomerId");
+                column: "BorrowerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_DirectorId",

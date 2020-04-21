@@ -18,7 +18,7 @@ namespace MovieRentalApp.Controllers
 
         public IActionResult Index()
         {
-            var availableMovies = _movieRepository.FindWhitDirector(x => x.BorrowerId == 0);
+            var availableMovies = _movieRepository.FindWhitDirector(x => x.BorrowerId == null);
             if (availableMovies.Count() == 0)
             {
                 return View("Empty");

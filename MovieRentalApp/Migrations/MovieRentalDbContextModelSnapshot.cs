@@ -76,7 +76,7 @@ namespace MovieRentalApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BorrowerId")
+                    b.Property<int?>("BorrowerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -114,9 +114,7 @@ namespace MovieRentalApp.Migrations
                 {
                     b.HasOne("MovieRentalApp.Models.Customer", "Borrower")
                         .WithMany()
-                        .HasForeignKey("BorrowerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BorrowerId");
 
                     b.HasOne("MovieRentalApp.Models.Director", "Director")
                         .WithMany("Movies")

@@ -15,13 +15,13 @@
         @foreach (Movie movie in Model)
         {
          <tr>
-            <td>@movie.ImageUrl</td>
-            <td>@movie.Id</td>
-            <td>@movie.Title</td>
-            <td>@movie.ReleaseDate</td>
-            <td>@movie.Director.Name</td>
-            <td><a class="btn btn-success" asp-controller="Rental" asp-action="RentMovie" asp-route-bookId="@movie.Id">Rent</a></td>
-          </tr>
+             <td><img src="@movie.ImageUrl" alt="Movie picture" style="width: 50px; height:50px;"></td>
+             <td>@movie.Id</td>
+             <td>@movie.Title</td>
+             <td>@movie.ReleaseDate</td>
+             <td>@movie.Director.Name</td>
+             <td><a class="btn btn-success" asp-controller="Rental" asp-action="RentMovie" asp-route-movieId="@movie.Id">Rent</a></td>
+         </tr>
         }
     </tbody>
 </table>

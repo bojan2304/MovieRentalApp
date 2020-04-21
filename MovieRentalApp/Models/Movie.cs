@@ -24,6 +24,7 @@ namespace MovieRentalApp.Models
         public int DirectorId { get; set; }
 
         public virtual Customer Borrower { get; set; }
+        [AllowNull]
         public int? BorrowerId { get; set; }
     }
 }

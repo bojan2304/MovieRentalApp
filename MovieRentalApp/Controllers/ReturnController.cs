@@ -21,7 +21,7 @@ namespace MovieRentalApp.Controllers
         public IActionResult Index()
         {
             // rented movies
-            var rentedMovies = _movieRepository.FindWhitDirectorAndCustomer(x => x.BorrowerId != 0);
+            var rentedMovies = _movieRepository.FindWhitDirectorAndCustomer(x => x.BorrowerId != null);
 
             if (rentedMovies == null || rentedMovies.ToList().Count() == 0)
             {
